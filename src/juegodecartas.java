@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 public class juegodecartas {
     public static String[][] crearMatrizCartas(){
@@ -16,9 +17,9 @@ public class juegodecartas {
         String[] numeros = new String[] {"1", "2",
                 "3", "4", "5", "6", "7", "8", "9",
                 "J", "Q", "K", "A"};
-        String[] puntajeC = new String[] {"1", "2",
-                "3", "4", "5", "6", "7", "8", "9",
-                "10", "10", "10", "11"};
+        String[] puntajeC = new String[] {"01", "02",
+                "03", "04", "05", "06", "07", "08",
+                "09", "10", "10", "10", "11"};
         String[][] MatrizCartas = crearMatrizCartas();
 
         for (int fila=0;fila<13;fila++){
@@ -42,11 +43,25 @@ public class juegodecartas {
         }
         return cartas;
     }
+    public static int conteoPuntaje(String[] cartas){
+        int a = cartas[0].length();
+        int b = cartas[1].length();
+        int c = cartas[2].length();
+        int pa= Integer.valueOf(cartas[a-1]+cartas[a-2]);
+        int pb= Integer.valueOf(cartas[b-1]+cartas[b-2]);
+        int pc= Integer.valueOf(cartas[c-1]+cartas[c-2]);
+        return pa+pb+pc;
+    }
+    public static int jugar(String a){
+        String[][] LasCartas= inicializarCartasJuego();
+        String[] TusCartas= obtenerCartas(LasCartas);
+        int Puntaje= conteoPuntaje(TusCartas);
+        System.out.println(a + "s cartas son: " + Arrays.toString(TusCartas));
+        System.out.println(a + " puntaje es: " + Puntaje);
+        return Puntaje;
+    }
 
     public static void main(String[] args){
-        String[][] matrizCartas =inicializarCartasJuego();
-        Random random= new Random();
-        int cartaA= random.nextInt(2);
-        System.out.println(cartaA);
+        jugar("Tu");
     }
 }
