@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
+
 public class juegodecartas {
     public static String[][] crearMatrizCartas(){
         return new String[13][4];
@@ -69,7 +71,36 @@ public class juegodecartas {
         return Puntaje;
     }
 
+    public static void menu(){
+        System.out.println("♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠");
+        System.out.println("1. Jugar Partida.");
+        System.out.println("2. Cerrar");
+        System.out.println("♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠");
+    }
+    public static void accion(){
+        Scanner scanner = new Scanner(System.in);
+        String resp = scanner.nextLine();
+        if (resp=="1"){
+            int tu=jugar("tu");
+            int su=jugar("su");
+            if (tu>20){
+                if (su>20){
+                    System.out.println("Ninguno ganó la partida");
+                }
+                else {
+                    System.out.println("Gana el jugador 2 con " + su + " puntos.");
+                }
+                }
+            else if (su>20){
+                System.out.println("Gana el jugador 1 con " + tu + " puntos.");
+            }
+        }
+    }
     public static void main(String[] args){
-        jugar("Tu");
+        boolean on = true;
+        while (on){
+            menu();
+
+        }
     }
 }
