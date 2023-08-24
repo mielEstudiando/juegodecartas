@@ -44,12 +44,15 @@ public class juegodecartas {
         return cartas;
     }
     public static int conteoPuntaje(String[] cartas){
-        int a = cartas[0].length();
-        int b = cartas[1].length();
-        int c = cartas[2].length();
-        int pa= Integer.valueOf(cartas[a-1]+cartas[a-2]);
-        int pb= Integer.valueOf(cartas[b-1]+cartas[b-2]);
-        int pc= Integer.valueOf(cartas[c-1]+cartas[c-2]);
+        String A=cartas[0];
+        String B=cartas[1];
+        String C=cartas[2];
+        int a = A.length();
+        int b = B.length();
+        int c = C.length();
+        int pa= Integer.valueOf(A.charAt(a-2)+A.charAt(a-1));
+        int pb= Integer.valueOf(B.charAt(b-2)+B.charAt(b-1));
+        int pc= Integer.valueOf(C.charAt(c-2)+C.charAt(c-1));
         return pa+pb+pc;
     }
     public static int jugar(String a){
