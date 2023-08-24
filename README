@@ -1,0 +1,18 @@
+planificación:
+recordar los nombres de las cartas
+empezar por las funciones sueltas
+testear, de manera individual, su funcionamiento correcto
+unir en un menú bonito. buscar decoraciones bonitas
+
+creación matriz
+crearMatrizCartas(), para crear la matriz vacía
+agregarCartas(string nombre carta, int puntaje) para agregar cartas individualmente
+inicializarCartasJuego(), que agrege todas las cartas de manera automática
+utilizaré dos arrays para esto último, si no sale mal
+
+preparación juego
+obtenerCartas(), para que los jugadores saquen cartas aleatorias
+conteoPuntaje(), que calcule el puntaje de los jugadores
+
+jugar(), básicamente el juego ordenado
+main(), eso pero con prints bonitos
