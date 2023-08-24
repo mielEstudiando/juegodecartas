@@ -43,22 +43,27 @@ public class juegodecartas {
         }
         return cartas;
     }
-    public static int conteoPuntaje(String[] cartas){
-        String A=cartas[0];
-        String B=cartas[1];
-        String C=cartas[2];
+    public static int conteoPuntaje(String[] cartas, int n){
+        String A=cartas[n];
+        System.out.println(A);
         int a = A.length();
-        int b = B.length();
-        int c = C.length();
-        int pa= Integer.valueOf(A.charAt(a-2)+A.charAt(a-1));
-        int pb= Integer.valueOf(B.charAt(b-2)+B.charAt(b-1));
-        int pc= Integer.valueOf(C.charAt(c-2)+C.charAt(c-1));
-        return pa+pb+pc;
+        char[] palabra= {A.charAt(a-2),A.charAt(a-1)};
+        String A2= new String(palabra);
+        int pa= Integer.valueOf(A2);
+        System.out.println(pa);
+        return pa;
+    }
+
+    public static int conteoTotal(String[] cartas){
+        int a = conteoPuntaje(cartas,0);
+        int b = conteoPuntaje(cartas,1);
+        int c = conteoPuntaje(cartas,2);
+        return a+b+c;
     }
     public static int jugar(String a){
         String[][] LasCartas= inicializarCartasJuego();
         String[] TusCartas= obtenerCartas(LasCartas);
-        int Puntaje= conteoPuntaje(TusCartas);
+        int Puntaje= conteoTotal(TusCartas);
         System.out.println(a + "s cartas son: " + Arrays.toString(TusCartas));
         System.out.println(a + " puntaje es: " + Puntaje);
         return Puntaje;
