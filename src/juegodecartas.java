@@ -47,12 +47,10 @@ public class juegodecartas {
     }
     public static int conteoPuntaje(String[] cartas, int n){
         String A=cartas[n];
-        System.out.println(A);
         int a = A.length();
         char[] palabra= {A.charAt(a-2),A.charAt(a-1)};
         String A2= new String(palabra);
         int pa= Integer.valueOf(A2);
-        System.out.println(pa);
         return pa;
     }
 
@@ -77,30 +75,42 @@ public class juegodecartas {
         System.out.println("2. Cerrar");
         System.out.println("♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠♡♢♣♠");
     }
-    public static void accion(){
+    public static void quienGana(int tu, int su){
+        if (tu>20){
+            if (su>20){
+                System.out.println("Ninguno ganó la partida"); //esta parte es HORRENDA
+            } else { //PERDÓN POR TANTO IF Y ELSE
+                System.out.println("Gana el jugador 2 con " + su + " puntos.");
+            } //EN MI DEFENSA, es por el poco tiempo
+        } else if (su>20){
+            System.out.println("Gana el jugador 1 con " + tu + " puntos.");
+        } else if (su>tu){
+            System.out.println("Gana el jugador 2 con " + su + " puntos.");
+        } else if (su==tu){
+            System.out.println("Hay un empate con " + tu + " puntos.");
+        } else {
+            System.out.println("Gana el jugador 1 con " + tu + " puntos.");
+        }
+    }
+
+    public static boolean accion(){
         Scanner scanner = new Scanner(System.in);
         String resp = scanner.nextLine();
-        if (resp=="1"){
+        System.out.println(resp);
+        if (resp.equals("1")){
             int tu=jugar("tu");
             int su=jugar("su");
-            if (tu>20){
-                if (su>20){
-                    System.out.println("Ninguno ganó la partida");
-                }
-                else {
-                    System.out.println("Gana el jugador 2 con " + su + " puntos.");
-                }
-                }
-            else if (su>20){
-                System.out.println("Gana el jugador 1 con " + tu + " puntos.");
-            }
+            quienGana(tu,su);
+        } else if (resp.equals("2")){
+            return false;
         }
+        return true;
     }
     public static void main(String[] args){
         boolean on = true;
         while (on){
             menu();
-
+            on = accion();
         }
     }
 }
